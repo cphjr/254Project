@@ -75,13 +75,3 @@ REACT_APP_API_URL=http://localhost:8000
 
 ## API Documentation
 Once the backend server is running, visit `http://localhost:8000/docs` for the interactive API documentation.
-
-## Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
