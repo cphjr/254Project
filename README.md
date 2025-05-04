@@ -44,34 +44,10 @@ crop-yield-prediction/
 
 ## Setup Instructions
 1. Clone the repository
-2. Set up the backend:
-   ```bash
-   cd backend
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
-3. Set up the frontend:
-   ```bash
-   cd frontend
-   npm install
-   ```
-4. Configure environment variables
-5. Start the development servers:
-   - Backend: `uvicorn app.main:app --reload`
-   - Frontend: `npm start`
+2. Run docker-compose up --build
 
-## Environment Variables
-Create `.env` files in both backend and frontend directories with the following variables:
-```
-# Backend
-DATABASE_URL=postgresql://user:password@localhost:5432/crop_yield_db
-OPENWEATHER_API_KEY=your_api_key
-OPENEPI_API_KEY=your_openepi_api_key
-
-# Frontend
-REACT_APP_API_URL=http://localhost:8000
-```
+## Frontend hosted
+go to localhost:3000
 
 ## API Documentation
 Once the backend server is running, visit `http://localhost:8000/docs` for the interactive API documentation.
