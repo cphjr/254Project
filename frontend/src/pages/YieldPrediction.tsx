@@ -14,20 +14,55 @@ import {
 import { DatePicker } from '@mui/x-date-pickers';
 import { format } from 'date-fns';
 
+interface SoilProperties {
+  ph: string;
+  nitrogen: string;
+  phosphorus: string;
+  potassium: string;
+  organic_matter: string;
+}
+
+interface WeatherData {
+  temperature: string;
+  humidity: string;
+  rainfall: string;
+  soil_moisture: string;
+}
+
+interface WeatherEntry {
+  date: string;
+  temperature: number;
+  humidity: number;
+  rainfall: number;
+  soil_moisture: number;
+}
+
 interface PredictionResult {
   predicted_yield: number;
   confidence_score: number;
   recommendations: string[];
 }
 
+interface FormData {
+  cropType: string;
+  fieldArea: string;
+  planting_date: Date | null;
+  soilType: string;
+  soilProperties: SoilProperties;
+  weather: WeatherData;
+}
+
+// Extract object-type keys from FormData
+type ObjectKeys = 'soilProperties' | 'weather';
+
 const YieldPrediction: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<PredictionResult | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     cropType: '',
     fieldArea: '',
-    planting_date: null as Date | null,
+    planting_date: null,
     soilType: '',
     soilProperties: {
       ph: '',
@@ -93,14 +128,14 @@ const YieldPrediction: React.FC = () => {
   const handleInputChange = (
     field: string,
     value: string | Date | null,
-    category?: string,
+    category?: ObjectKeys,
     subfield?: string
   ) => {
     if (category && subfield) {
       setFormData((prev) => ({
         ...prev,
         [category]: {
-          ...prev[category as keyof typeof prev],
+          ...prev[category],
           [subfield]: value,
         },
       }));
@@ -262,4 +297,4 @@ const YieldPrediction: React.FC = () => {
   );
 };
 
-export default YieldPrediction; 
+export default YieldPrediction;
