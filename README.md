@@ -45,5 +45,9 @@ crop-yield-prediction/
 ## Setup Instructions
 1. Clone the repository
 2. Run docker-compose up --build
+
+## Frontend hosted
+go to localhost:3000
+
 ## API Documentation
 Once the backend server is running, visit `http://localhost:8000/docs` for the interactive API documentation.
